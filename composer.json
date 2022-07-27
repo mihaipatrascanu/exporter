@@ -1,0 +1,11 @@
+{
+    "name": "mihai/exporter",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mihai patrascanu"
+        }
+    ],
+    "require": {}
+}
