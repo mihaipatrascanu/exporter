@@ -1,11 +1,20 @@
 {
-    "name": "mihai/exporter",
+    "name": "mihai/csv",
+    "description": "Export Dates to CSV file",
     "type": "project",
     "license": "MIT",
     "authors": [
         {
-            "name": "mihai patrascanu"
+            "name": "Mihai Patrascanu"
         }
     ],
-    "require": {}
+    "autoload":{
+        "psr-4":{"app\\": "src/app" }
+    },
+    "autoload-dev":{
+        "psr-4":{"app\\": "tests/app" }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    }
 }
