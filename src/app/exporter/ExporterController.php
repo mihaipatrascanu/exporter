@@ -22,6 +22,8 @@ class ExporterController extends Command
         //creating the days array
         $today = date("Y-m-d");
         $data = ExporterFactory::getMoneyDay($today, $nextMonths = 11, $bonusDay = 10);
+
+        ExporterFactory::createCSV($data, "days.csv", "output",";");
         
         print_r($data);
         

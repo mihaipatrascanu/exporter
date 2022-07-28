@@ -1,6 +1,7 @@
 <?php
 namespace app\exporter;
-abstract class ExporterFactory
+
+class ExporterFactory
 {
 
     protected $results = array();
@@ -84,10 +85,42 @@ abstract class ExporterFactory
         return $final;
     }
 
+    /**
+     * Check if the folder name exist
+     * @param string $folderName
+     */
+    private static function makeDir($folderName)
+    {
+        return is_dir($folderName) || mkdir($folderName);
+    }
+
+    /**
+     * Creating and exporting the CSV file
+     * @param array $data Data for creating CSV file
+     * @param string $fileName  Name of the exported file
+     * @param string $folderName Name of the folder file
+     * @param string $delimiter  
+     */
+    public static function createCSV($data, $fileName, $folderName, $delimiter = ",")
+    {
+        
+       //self::makeDir($folderName);
+       //$this->makeDir($folderName);
+
+        ExporterFactory::makeDir($folderName);
+
+        $path = $folderName."/". $fileName;
+
+        $export = "";
+        foreach($data as $key=>$value)
+        {
+            $export .= $value["period"].$delimiter.$value["basicPayment"].$delimiter.$value["bonusPayment"]."\n";
+        }
+
+        $fp = fopen($path , 'w+');
+        fwrite($fp, print_r($export, true)); 
+        //Once the data is written, it will be saved in the path given.
+        fclose($fp);
+    }
  
-
-
-
-
-
 }
