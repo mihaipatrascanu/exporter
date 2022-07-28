@@ -12,25 +12,26 @@ class ExporterController extends Command
     {
         $this->setName('createCSV')
             ->setDescription('Creates a new CSV file.')
+            ->addArgument('folderName', InputArgument::REQUIRED, 'The name of the folder.')
             ->addArgument('fileName', InputArgument::REQUIRED, 'The name of the file.')
             ->setHelp('This command allows you to create a csv file...');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        
+        $fileName = $input->getArgument('fileName');
+        $folderName = $input->getArgument('folderName');
+
         //creating the days array
         $today = date("Y-m-d");
         $data = ExporterFactory::getMoneyDay($today, $nextMonths = 11, $bonusDay = 10);
 
-        ExporterFactory::createCSV($data, "days.csv", "output",";");
+        ExporterFactory::createCSV($data, $fileName, $folderName,";");
         
-        print_r($data);
+        //print_r($data);
         
-     
-    
         // retrieve the argument value using getArgument()
-        $output->writeln('FileName: '.$input->getArgument('fileName'));
+        $output->writeln('New file: '.$fileName.' has been create in folder '.$folderName);
 
         return 1;
     }

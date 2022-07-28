@@ -108,7 +108,8 @@ class ExporterFactory
        //$this->makeDir($folderName);
 
         ExporterFactory::makeDir($folderName);
-
+        
+        $fileName = $fileName.".csv";
         $path = $folderName."/". $fileName;
 
         $export = "";
