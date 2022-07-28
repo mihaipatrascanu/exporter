@@ -3,8 +3,8 @@ ExporterCSV
 
 After downloding the app please use composer update
 
-For Testing 
+For Testing:
 php exporter.php createCSV "folderName" "fileName"
 
-Example 
+Example:
 php exporter.php createCSV "output" "test"

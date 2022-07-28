@@ -1,0 +1,39 @@
+Steps in creating the application.
+
+We start creating a folder for the application
+
+Open the folder in visual studio code and snc the folder with one repository
+
+Creating the composer.json file and commit to master
+--with composer init--
+
+Add ventor folder to git ignore and other files that we do not need
+
+Start creating the structure of the application
+- create a folder src to keep all the code there
+- updating the composer with all the dependencies 
+---install phph unit 
+----create phpunit.xml
+---install symfony console
+--composer update--
+--some testing to see if everything it's working
+
+After we have created the index of our application, in our case exporter.php
+we have to register a command for further development and testing
+// ... register commands
+$application->add(new ExporterController()); 
+
+For this application we still have to create some code for catching and working with the exceptions.
+
+Like format of a date to be Y-m-d
+Like 30,31 February or 29 every 4 years, if is past as bonus day....
+
+We can create more arguments for number of months, bonus day and the for the start day
+
+About the structure....for speed reasons I made everything in ExporterFactory class
+For a big project creating the data has to be in one class, and the code for 
+creating and exporting the CSV file has to be in another class, 
+parssing only some properties when the model is created
+and then using only the properties/methods from the class
+
+The end
