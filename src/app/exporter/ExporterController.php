@@ -12,20 +12,23 @@ class ExporterController extends Command
     {
         $this->setName('createCSV')
             ->setDescription('Creates a new CSV file.')
-            ->addArgument('filename', InputArgument::REQUIRED, 'The name of the file.')
+            ->addArgument('fileName', InputArgument::REQUIRED, 'The name of the file.')
             ->setHelp('This command allows you to create a csv file...');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln([
-            'Testing output',
-            'Testing output',
-            'Testing output',
-        ]);
+        
+        //creating the days array
+        $today = date("Y-m-d");
+        $data = ExporterFactory::getMoneyDay($today, $nextMonths = 11, $bonusDay = 10);
+        
+        print_r($data);
+        
+     
     
         // retrieve the argument value using getArgument()
-        $output->writeln('FileName: '.$input->getArgument('filename'));
+        $output->writeln('FileName: '.$input->getArgument('fileName'));
 
         return 1;
     }
