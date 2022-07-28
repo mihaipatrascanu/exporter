@@ -11,7 +11,7 @@ abstract class ExporterFactory
      */
     private static function periodTime( $date= "")
     {
-        return date('F Y', strtotime($date));
+        return date('M/y', strtotime($date));
     }
 
     /**
