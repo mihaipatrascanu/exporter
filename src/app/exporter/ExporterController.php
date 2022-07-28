@@ -27,9 +27,7 @@ class ExporterController extends Command
         $data = ExporterFactory::getMoneyDay($today, $nextMonths = 11, $bonusDay = 10);
 
         ExporterFactory::createCSV($data, $fileName, $folderName,";");
-        
-        //print_r($data);
-        
+
         // retrieve the argument value using getArgument()
         $output->writeln('New file: '.$fileName.' has been create in folder '.$folderName);
 
